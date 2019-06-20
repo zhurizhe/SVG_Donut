@@ -39,18 +39,21 @@ export default class Donut extends Component {
             isBig = 1
         }
         let fill = '#7ED321';
-        if(percent == 0){
-            fill="#ffffff";
-        }else if(percent < 60 && percent > 0){
-            fill="#e3212c"
-        }else if(percent <= 69 && percent >= 60){
-            fill="#fd7a22"
-        }else if(percent <= 79 && percent >= 70){
-            fill="#fdcb2e"
-        }else if(percent <= 89 && percent >= 80){
-            fill="#afd043"
-        }else if(percent >= 90){
-            fill="#84cf41"
+        if(this.props.getColor && (typeof this.props.getColor === 'function')){
+            fill = this.props.getColor(percent);
+        }
+//         if(percent == 0){
+//             fill="#ffffff";
+//         }else if(percent < 60 && percent > 0){
+//             fill="#e3212c"
+//         }else if(percent <= 69 && percent >= 60){
+//             fill="#fd7a22"
+//         }else if(percent <= 79 && percent >= 70){
+//             fill="#fdcb2e"
+//         }else if(percent <= 89 && percent >= 80){
+//             fill="#afd043"
+//         }else if(percent >= 90){
+//             fill="#84cf41"
         }
         if(percent > 0 && percent < 100){
             path = <path d={"M28,2 A26,26 360 " + isBig + ",1 " + x1 + "," + y1 + " L" + x2 + "," + y2 + " A18,18 360 " + isBig + ",0 28,10 L28,2 "} fill={fill}></path>
